@@ -1,0 +1,37 @@
+import React from 'react';
+import { Button, ThemeButton } from './Button';
+import {addDecorator, ComponentMeta, ComponentStory} from '@storybook/react';
+import {ThemeDecorator} from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import {Theme} from "app/provider/ThemeProvider";
+
+export default {
+    title: 'shared/Button',
+    component: Button,
+    parameters: {
+        layout: 'centered',
+    },
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof Button>;
+
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({})
+Primary.args = {
+    children: 'text',
+}
+
+export const Clear = Template.bind({})
+Clear.args = {
+    children: 'text',
+    theme: ThemeButton.CLEAR,
+}
+
+export const Outline = Template.bind({})
+Outline.args = {
+    children: 'text',
+    theme: ThemeButton.OUTLINE,
+}
+
+Outline.decorators = [ThemeDecorator(Theme.DARK)];
