@@ -12,7 +12,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    config.resolve.modules.push(paths.src);
+    config.resolve.modules.unshift(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
 
     // eslint-disable-next-line no-param-reassign
@@ -26,6 +26,12 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
     config.module.rules.push(buildCssLoader(true));
     config.module.rules.push(buildSvgLoader());
+
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(false),
+        }),
+    );
 
     return config;
 };
