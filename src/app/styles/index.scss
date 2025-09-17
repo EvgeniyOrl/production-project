@@ -3,6 +3,14 @@
 @import "themes/dark";
 @import "themes/normal";
 
+@font-face {
+    font-family: Consolas;
+    src: url("../../../public/fonts/Consolas.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; // чтобы быстрее подгружался
+}
+
 body {
     font: var(--font-m);
     color: var(--primary-color);
